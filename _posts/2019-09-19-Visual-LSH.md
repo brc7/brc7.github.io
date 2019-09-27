@@ -52,7 +52,7 @@ The image shows the hash bins for a single SRP (left) and for three SRP hashes (
 
 $$ p(\mathbf{x},\mathbf{y}) = 1 - \frac{\theta(\mathbf{x},\mathbf{y})}{\pi}$$
 
-The illustration in $$\mathbb{R}^2$$ should provide some intuition for why this is the case. The probability that $$h(\mathbf{x}) \neq h(\mathbf{y})$$ is the probability that a randomly chosen line falls between the two vectors. In practice, the projections are allowed to be sparse. Many elements of $$\mathbf{w}$$ may be zero without affecting the locality-sensitive property. As a result, this hash function can be very fast when sparse random projections are used. For more information, see [2]
+The illustration in $$\mathbb{R}^2$$ should provide some intuition for why this is the case. The probability that $$h(\mathbf{x}) \neq h(\mathbf{y})$$ is the probability that a randomly chosen line falls between the two vectors. In practice, the projections are allowed to be sparse. Many elements of $$\mathbf{w}$$ may be zero without affecting the locality-sensitive property. As a result, this hash function can be very fast when sparse random projections are used. For more information, see [2,3]. 
 
 <img src="/assets/img/2019-09-19-SRP-definition.png" style="display:block; margin-left: auto; margin-right: auto;" width="400">
 
@@ -61,11 +61,11 @@ The illustration in $$\mathbb{R}^2$$ should provide some intuition for why this 
 
 <img src="/assets/img/2019-09-19-p-stable.png" style="display:block; margin-left: auto; margin-right: auto;" width="400">
 
-The LSH functions for the Euclidean (L2) and Manhattan (L1) distances are based on the p-stable LSH scheme introduced in [X]. Similar to SRP, these LSH functions are also based on random projections that cut $$\mathbb{R}^n$$ into pieces. Each piece becomes a hash bin. Instead of taking the sign of the projection, we simply round down. This produces hash bins that repeat in the direction of $$\mathbf{w}$$ instead of a single decision boundary as with SRP. 
+The LSH functions for the Euclidean (L2) and Manhattan (L1) distances are based on the p-stable LSH scheme introduced in [4]. Similar to SRP, these LSH functions are also based on random projections that cut $$\mathbb{R}^n$$ into pieces. Each piece becomes a hash bin. Instead of taking the sign of the projection, we simply round down. This produces hash bins that repeat in the direction of $$\mathbf{w}$$ instead of a single decision boundary as with SRP. 
 
 $$ h(\mathbf{x}) = \Big\lfloor \frac{\mathbf{w}^{\top}\mathbf{x} + b}{r}\Big\rfloor $$
 
-The user-defined parameter $$r$$ determines the width of each hash bin while $$b$$ is a uniform random variable in the range $$[0,r]$$. A Gaussian distribution for $$\mathbf{w}$$ results in a LSH function for the Euclidean distance, while a Cauchy distribution produces a Manhattan distance LSH. Unlike the previous LSH functions, this hash maps to the entire set of integers. The analytic expression for the collision probability is complicated to write down but a closed-form expression is available in [3]. Rather than reproduce the expression, we provide plots of $$p(x,y)$$ against $$d(x,y)$$ for various choices of $$r$$. The plot is for the Euclidean LSH, but the results for Manhattan distance are similar. 
+The user-defined parameter $$r$$ determines the width of each hash bin while $$b$$ is a uniform random variable in the range $$[0,r]$$. A Gaussian distribution for $$\mathbf{w}$$ results in a LSH function for the Euclidean distance, while a Cauchy distribution produces a Manhattan distance LSH. Unlike the previous LSH functions, this hash maps to the entire set of integers. The analytic expression for the collision probability is complicated to write down but a closed-form expression is available in [4]. Rather than reproduce the expression, we provide plots of $$p(x,y)$$ against $$d(x,y)$$ for various choices of $$r$$. The plot is for the Euclidean LSH, but the results for Manhattan distance are similar. 
 
 
 ### Clustering LSH
