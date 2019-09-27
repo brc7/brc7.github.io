@@ -52,7 +52,7 @@ The image shows the hash bins for a single SRP (left) and for three SRP hashes (
 
 $$ p(\mathbf{x},\mathbf{y}) = 1 - \frac{\theta(\mathbf{x},\mathbf{y})}{\pi}$$
 
-The illustration in $$\mathbb{R}^2$$ should provide some intuition for why this is the case. The probability that $$h(\mathbf{x}) \neq h(\mathbf{y})$$ is the probability that a randomly chosen line falls between the two vectors. In practice, the projections are allowed to be sparse. Many elements of $$\mathbf{w}$$ may be zero without affecting the locality-sensitive property. As a result, this hash function can be very fast when sparse random projections are used. For more information, see [X (database-friendly)]
+The illustration in $$\mathbb{R}^2$$ should provide some intuition for why this is the case. The probability that $$h(\mathbf{x}) \neq h(\mathbf{y})$$ is the probability that a randomly chosen line falls between the two vectors. In practice, the projections are allowed to be sparse. Many elements of $$\mathbf{w}$$ may be zero without affecting the locality-sensitive property. As a result, this hash function can be very fast when sparse random projections are used. For more information, see [2]
 
 <img src="/assets/img/2019-09-19-SRP-definition.png" style="display:block; margin-left: auto; margin-right: auto;" width="400">
 
@@ -65,7 +65,7 @@ The LSH functions for the Euclidean (L2) and Manhattan (L1) distances are based 
 
 $$ h(\mathbf{x}) = \Big\lfloor \frac{\mathbf{w}^{\top}\mathbf{x} + b}{r}\Big\rfloor $$
 
-The user-defined parameter $$r$$ determines the width of each hash bin while $$b$$ is a uniform random variable in the range $$[0,r]$$. A Gaussian distribution for $$\mathbf{w}$$ results in a LSH function for the Euclidean distance, while a Cauchy distribution produces a Manhattan distance LSH. Unlike the previous LSH functions, this hash maps to the entire set of integers. The analytic expression for the collision probability is complicated to write down but a closed-form expression is available in []. Rather than reproduce the expression, we provide plots of $$p(x,y)$$ against $$d(x,y)$$ for various choices of $$r$$. The plot is for the Euclidean LSH, but the results for Manhattan distance are similar. 
+The user-defined parameter $$r$$ determines the width of each hash bin while $$b$$ is a uniform random variable in the range $$[0,r]$$. A Gaussian distribution for $$\mathbf{w}$$ results in a LSH function for the Euclidean distance, while a Cauchy distribution produces a Manhattan distance LSH. Unlike the previous LSH functions, this hash maps to the entire set of integers. The analytic expression for the collision probability is complicated to write down but a closed-form expression is available in [3]. Rather than reproduce the expression, we provide plots of $$p(x,y)$$ against $$d(x,y)$$ for various choices of $$r$$. The plot is for the Euclidean LSH, but the results for Manhattan distance are similar. 
 
 
 ### Clustering LSH
@@ -83,3 +83,12 @@ It is easy to show that this function is locality-sensitive but much harder to s
 MinHash is a LSH function for sets rather than for vectors. The probability that two sets collide under MinHash is equal to the Jaccard similarity of the sets, which is roughly a measure of how much the two sets overlap. The details are non-trivial and require an in-depth explanation that is beyond the scope of this post. However, we still wanted to mention MinHash since it is a powerful technique with many practical applications. 
 
 ### References
+
+[1] Indyk, P., & Motwani, R. (1998, May). Approximate nearest neighbors: towards removing the curse of dimensionality. In *Proceedings of the thirtieth annual ACM symposium on Theory of computing* (pp. 604-613). ACM.
+
+[2] Li, P., Hastie, T. J., & Church, K. W. (2006, August). Very sparse random projections. In *Proceedings of the 12th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining* (pp. 287-296). ACM.
+
+[3] Achlioptas, D. (2001, May). Database-friendly random projections. In *Proceedings of the twentieth ACM SIGMOD-SIGACT-SIGART symposium on Principles of database systems* (pp. 274-281). ACM.
+
+[4] Datar, M., Immorlica, N., Indyk, P., & Mirrokni, V. S. (2004, June). Locality-sensitive hashing scheme based on p-stable distributions. In *Proceedings of the twentieth annual symposium on Computational geometry* (pp. 253-262). ACM.
+
