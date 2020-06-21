@@ -92,3 +92,4 @@ MinHash is a LSH function for sets rather than for vectors. The probability that
 
 [4] Datar, M., Immorlica, N., Indyk, P., & Mirrokni, V. S. (2004, June). Locality-sensitive hashing scheme based on p-stable distributions. In *Proceedings of the twentieth annual symposium on Computational geometry* (pp. 253-262). ACM.
 
+[Photo Credit] Jeremy Bishop on Unsplash
