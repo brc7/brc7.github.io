@@ -2,7 +2,7 @@
 title: Minimal perfect hash functions
 author: Ben Coleman
 layout: post
-background: '/assets/img/2019-07-21-background.jpg'
+background: '/assets/img/2017-12-16-background.jpg'
 ---
 
 If you want to observe a hash function in the wild, all you need to do is look under the hood of the nearest key-value store. Hashing is a fundamentally simple idea with an enormous scope; hash-based data structures are present nearly everywhere in practice. Most programmers are familiar with random hash functions. However, there is an incredibly diverse taxonomy of different hashes, including more exotic constructions such as cryptographic hashes and locality sensitive hash functions. In this post, we provide a user-friendly introduction to the literature on minimal perfect hash functions. 
