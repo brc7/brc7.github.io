@@ -71,6 +71,8 @@ If you have no valid reason to optimize, don't do it.
 
 - **Does the profiler show hotspots?** In well-written code, the profiler will show that the program spends most of its time in a few expensive locations, called "hotspots". If the profiler does not show hotspots, you may need to rethink your design or programming practices to avoid uniformly slow code.
 
+
+
 [Image Credit] Jeremy Bishop on Unsplash
 
 [Image Credit] Taken at the Computer History Museum's IBM 1401 restoration project. Released under the [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) license. 
