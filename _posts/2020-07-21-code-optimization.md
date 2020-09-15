@@ -2,7 +2,7 @@
 title: What you should know before optimizing code
 author: Ben Coleman
 layout: post
-background: '/assets/img/2019-08-11-background.jpg'
+background: '/assets/img/2020-07-10-background.jpg'
 ---
 
 Maybe you've heard the rules of program optimization.
