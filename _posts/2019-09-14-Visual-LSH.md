@@ -54,7 +54,7 @@ The picture shows the hash bins for a single SRP (left) and for three SRP hashes
 
 $$ p(\mathbf{x},\mathbf{y}) = 1 - \frac{\theta(\mathbf{x},\mathbf{y})}{\pi}$$
 
-The picture below provides intuition for why SRP is sensitive to angles. The probability that $$h(\mathbf{x}) \neq h(\mathbf{y})$$ is the probability that a randomly chosen line falls between $$\mathbf{x}$$ and $$\mathbf{y}$$.
+The picture below provides intuition for why SRP is sensitive to angles. The probability that $$h(\mathbf{x}) \neq h(\mathbf{y})$$ is the probability that a randomly chosen line falls between $$\mathbf{x}$$ and $$\mathbf{y}$$. If we randomly pick an angle, there is a $$ \frac{\theta}{\pi} $$ chance that it falls between the two points and separates them. 
 
 <img src="/assets/img/2019-09-19-SRP-definition.png" style="display:block; margin-left: auto; margin-right: auto;" width="400">
 
