@@ -32,3 +32,31 @@ $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $gray-100 !default;
 $dark:          $gray-800 !default;
+
+$list-group-bg:                 #fff !default;
+$list-group-border:             #ddd !default;
+$list-group-border-radius:      4px !default;
+$list-group-hover-bg:           #f5f5f5 !default;
+$list-group-active-color:       #fff !default;
+$list-group-active-bg:          #337ab7 !default;
+$list-group-active-border:      #337ab7 !default;
+$list-group-active-text-color:  lighten(#337ab7, 40%) !default;
+$list-group-disabled-color:      $gray-400 !default;
+$list-group-disabled-bg:         $gray-200 !default;
+$list-group-disabled-text-color: $list-group-disabled-color !default;
+
+$list-group-link-color:         #555 !default;
+$list-group-link-hover-color:   $list-group-link-color !default;
+$list-group-link-heading-color: #333 !default;
+$cursor-disabled:                not-allowed !default;
+
+$label-default-bg:            $gray-400 !default;
+$label-primary-bg:            #337ab7 !default;
+$label-success-bg:            #5cb85c !default;
+$label-info-bg:               #5bc0de !default;
+$label-warning-bg:            #f0ad4e !default;
+$label-danger-bg:             #d9534f !default;
+$label-color:                 #fff !default;
+$label-link-hover-color:      #fff !default;
+
+
