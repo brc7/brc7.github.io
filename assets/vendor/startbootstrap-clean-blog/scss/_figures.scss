@@ -1,0 +1,13 @@
+// Styling for images / figures / plots
+
+img.wrapfig {
+  margin:20px;
+  float:right; 
+
+  @media only screen and (max-width: 500px) {
+    float:none !important;
+    display:block;
+    margin-left:auto; 
+    margin-right:auto;
+  }
+}
