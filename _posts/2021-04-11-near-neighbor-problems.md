@@ -92,8 +92,6 @@ The authors of ["Diverse Near Neighbor Problem"](https://dl.acm.org/doi/10.1145/
 
 We can also modify the near neighbor problem by making some assumptions about the dataset. For example, maybe the data appears to be high-dimensional, but there are only data points in a small region of the space. The near neighbor problem is easier than expected because we only need to search in the small occupied region. This is a low-dimensional problem in disguise, and the cost of search is in terms of the "intrinsic" dimensionality rather than the original dimension. 
 
-**Worst-Case:** Without making assumptions 
-
 **Stability:** The notion of near-neighbor stability has been around since at least 1999, when Beyer et. al. published the seminal paper ["When Is Nearest Neighbor Meaningful?"](https://link.springer.com/chapter/10.1007/3-540-49257-7_15). A stable near neighbor query is one where there is a large gap between the neighbors and non-neighbors in the dataset. The idea is that a small perturbation of the query should not change the search results.
 
 <img src="/assets/img/2020-04-11/2020-04-11-stability.png" style="display:block; margin-left: auto; margin-right: auto;" width="400">
