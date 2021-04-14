@@ -119,7 +119,8 @@ There are two steps to pruning the set of thin edges. First, we solve a linear p
 
 The deterministic version of the problem constrains $$x_e$$ to the set $$\{0,1\}$$, resulting in an NP-hard combinatoric optimization problem. To get around this, the authors of [1-3] relax the constraint to $$x_e \geq 0$$, yielding a linear programming problem.
 
-$$ \mathrm{argmin} \sum_{e \in E} x_e \text{ with } \ge \|E\| \text{ constraints}$$
+$$ \mathrm{argmin} \sum_{e \in E} x_e$$
+$$ \text{Subject to } \ge \|E\| \text{ constraints}$$
 
 See [1-3] for details about the constraints. Once we have the (possibly fractional) values of $$x_e$$, we use randomized rounding. That is, we include an edge $$e$$ in the spanner with probability proportional to $$x_e$$.
 
