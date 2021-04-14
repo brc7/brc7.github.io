@@ -49,7 +49,7 @@ If our first choice for a server goes offline, we simply move the key to the sec
 
 To use rendezvous hashing, each key needs its own unique server priority list. How do we generate a random permutation of servers for each key?
 
-It turns out that we can directly apply a common hashing technique to permute a set of items [1]. First, we hash each server to get a set of integer hash values. Then, we sort the servers based on the hash values. The result is a randomly permuted list of servers. To ensure that each key gets a unique permutation, we also have to make the hash function depend on the key. But this is not difficult - the solution is to concatenate the key with each server or to use the server ID as a hash seed.
+It turns out that we can directly apply a common hashing technique to permute a set of items.[^1] First, we hash each server to get a set of integer hash values. Then, we sort the servers based on the hash values. The result is a randomly permuted list of servers. To ensure that each key gets a unique permutation, we also have to make the hash function depend on the key. But this is not difficult - the solution is to concatenate the key with each server or to use the server ID as a hash seed.
 
 
 <img src="/assets/img/2020-12-26/max_weight.png" style="display:block; margin-left: auto; margin-right: auto;" width="400">
@@ -62,7 +62,7 @@ The final rendezvous hashing algorithm goes like this:
 
 #### Advantages of Rendezvous Hashing
 
-**Cascaded Failover:** When a server fails, many load balancing algorithms forward all of the load to a single server. This can lead to [cascaded failure](https://www.infoq.com/articles/anatomy-cascading-failure/) if the failover server cannot handle the new load. Rendezvous hashing avoids this problem because each key potentially has a different second-choice server. With a sufficiently good hash function [2], the load from a failing server is evenly distributed across the remaining servers.
+**Cascaded Failover:** When a server fails, many load balancing algorithms forward all of the load to a single server. This can lead to [cascaded failure](https://www.infoq.com/articles/anatomy-cascading-failure/) if the failover server cannot handle the new load. Rendezvous hashing avoids this problem because each key potentially has a different second-choice server. With a sufficiently good hash function,[^2] the load from a failing server is evenly distributed across the remaining servers.
 
 **Weighted Servers:** In some situations, we want to do biased load balancing rather than uniform random key assignment. For example, some servers might have larger capacity and should therefore be selected more often. Rendezvous hashing accommodates weighted servers in a very elegant way. Instead of sorting the servers based on their hash values, we rank them based on $$-\frac{w_i}{\ln h_i(x)}$$, where $$x$$ is the key, $$w_i$$ is the weight associated with server $$i$$, and $$h_i(x)$$ is the hash value (normalized to [0,1]). For more details, see [Jason Resch's slides from SDC 2015](https://www.snia.org/sites/default/files/SDC15_presentations/dist_sys/Jason_Resch_New_Consistent_Hashings_Rev.pdf).
 
@@ -84,6 +84,6 @@ Rendezvous hashing is a good way to do distributed load balancing for small to m
 
 #### Notes
 
-[1] The same trick is used to implement MinHash, a [locality sensitive hash function](https://randorithms.com/2019/09/19/Visual-LSH.html).
-[2] My intuition is that the hash function has to be 2-universal for this to be true, but I did not check. \\
+[^1]: The same trick is used to implement MinHash, a [locality sensitive hash function](https://randorithms.com/2019/09/19/Visual-LSH.html).
+[^2]: My intuition is that the hash function has to be 2-universal for this to be true, but I did not check. \\
 

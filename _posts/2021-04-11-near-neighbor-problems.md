@@ -24,11 +24,11 @@ Unfortunately, *exact* solutions scale poorly with the dimensionality, and we in
 
 ### Relaxations
 
-How could we go about relaxing the nearest neighbor problem? We could simply allow a few of the top $$K$$ entries to be incorrect, as if we'd randomly replaced some of the top neighbors with different points. But the randomized version of the exact KNN problem is asymptotically no easier than the original problem [1], so we need to adjust the problem in a different way. One way is to allow some "wiggle room" in the distance between the neighbors and the query.
+How could we go about relaxing the nearest neighbor problem? We could simply allow a few of the top $$K$$ entries to be incorrect, as if we'd randomly replaced some of the top neighbors with different points. But the randomized version of the exact KNN problem is asymptotically no easier than the original problem,[^1] so we need to adjust the problem in a different way. One way is to allow some "wiggle room" in the distance between the neighbors and the query.
 
 **c-Approximate K-Nearest Neighbor (C-KNN):** Solve the KNN problem, but it's okay if you return a point within $$C$$ times the distance from the query to the $$i$$-th nearest neighbor instead of the exact $$i$$-th nearest neighbor. 
 
-It turns out that for many algorithms, the hardness of search strongly depends on the distance between the query and the neighbors [2]. The search is easiest when the neighbors are close to the query, but harder when the neighbors are at a greater distance. This behavior means that any variation of the KNN problem (including C-KNN) is coupled in deep and unpleasant ways with the dataset and query. 
+It turns out that for many algorithms, the hardness of search strongly depends on the distance between the query and the neighbors.[^2] The search is easiest when the neighbors are close to the query, but harder when the neighbors are at a greater distance. This behavior means that any variation of the KNN problem (including C-KNN) is coupled in deep and unpleasant ways with the dataset and query. 
 
 For example, the nearest $$K$$ points from the dataset may be within a very small distance for some queries (and therefore easy to locate). In other cases, the neighbors may be very far away (requiring us to search through a large volume of empty space). In order to prove bounds on the query time, we have to introduce a notion of "query difficulty" to the problem statement.
 
@@ -60,7 +60,7 @@ Researchers have also proposed several *modified* versions of the near neighbor 
 
 #### Fairness
 
-To see an example of undesirable behavior, suppose we have a dataset where many points are very close together. It turns out that we can solve the R-ANN problem - even if we ignore most of the points in the dataset! For example, we could delete all of the blue points in the following picture while still providing valid search results [3]. This is a problem for recommender systems because a search algorithm could unintentionally "shadow ban" certain data points through algorithmic bias.
+To see an example of undesirable behavior, suppose we have a dataset where many points are very close together. It turns out that we can solve the R-ANN problem - even if we ignore most of the points in the dataset! For example, we could delete all of the blue points in the following picture while still providing valid search results.[^3] This is a problem for recommender systems because a search algorithm could unintentionally "shadow ban" certain data points through algorithmic bias.
 
 <img src="/assets/img/2020-04-11/2020-04-11-fair-R-ANN.png" style="display:block; margin-left: auto; margin-right: auto;" width="400">
 
@@ -98,7 +98,7 @@ We can also modify the near neighbor problem by making some assumptions about th
 
 The notion of stability is formally defined as a ratio of distances, where the furthest neighbor is located at distance $$R$$ from the query and the closest non-neighbor is at distance $$\geq (1+\epsilon)R$$. That is, there is a clear margin between the neighbors and the non-neighbors that is parameterized by $$\epsilon$$.
 
-**Sparsity:** Sparsity is a measure of query hardness that I proposed in our [ICML 2020 paper on low-memory near neighbor search](http://proceedings.mlr.press/v119/coleman20a/coleman20a.pdf). Sparsity is closely related to stability, but allows us to specify more structure in the distribution of points. A sparse query is one where the sum of similarities (inverse distances) is bounded. This amounts to an assumption where the non-neighbors in the dataset are *spread out* rather than simply separated from the neighbors by a margin.
+**Sparsity:** Sparsity is a measure of query hardness that I proposed in our [ICML 2020 paper on low-memory near neighbor search](http://proceedings.mlr.press/v119/coleman20a/coleman20a.pdf).[^4] Sparsity is closely related to stability, but allows us to specify more structure in the distribution of points. A sparse query is one where the sum of similarities (inverse distances) is bounded. This amounts to an assumption where the non-neighbors in the dataset are *spread out* rather than simply separated from the neighbors by a margin.
 
 
 <img src="/assets/img/2020-04-11/2020-04-11-sparsity.png" style="display:block; margin-left: auto; margin-right: auto;" width="400">
@@ -120,7 +120,7 @@ In practice, near neighbor search implementations are evaluated using informatio
 
 For example, suppose we return 100 points from the dataset as neighbors in a product recommendation engine. A reasonable expectation is that the 10 best (nearest) products appears somewhere in our 100 search results. Unfortunately, the theoretical problem statements are difficult to relate to our real-world expectations from the system. For this reason, we often evaluate algorithms using a metric called "Recall of X at Y" (RX@Y). RX@Y is the fraction of the closest X neighbors that appear in the first Y search results. The values of X and Y are application-dependent. Search engines often use R10@100, while NLP applications like question-answering use R10@10 or even R1@1.
 
-To make it more concrete, consider the performance of Algorithm A and Algorithm B in the figure below [5]. If our latency budget is 0.75ms, we can get 96% recall with Algorithm A or 98% recall with Algorithm B. 
+To make it more concrete, consider the performance of Algorithm A and Algorithm B in the figure below.[^5] If our latency budget is 0.75ms, we can get 96% recall with Algorithm A or 98% recall with Algorithm B. 
 
 <img src="/assets/img/2020-04-11/2020-04-11-JANN.png" style="display:block; margin-left: auto; margin-right: auto;" width="400">
 
@@ -138,12 +138,12 @@ In the JANN problem, anything goes - GPUs, deep networks, graph heuristics and p
 
 ### Notes
 
-[1] I am not aware of an algorithm which solves the randomized exact KNN problem in sublinear query time and linear space on worst-case problem instances. It seems unlikely that such an algorithm exists. If it did, we could achieve an arbitrarily small failure probability by independently issuing the query a constant number of times.
+[^1]: I am not aware of an algorithm which solves the randomized exact KNN problem in sublinear query time and linear space on worst-case problem instances. It seems unlikely that such an algorithm exists. If it did, we could achieve an arbitrarily small failure probability by independently issuing the query a constant number of times.
 
-[2] This is true for locality-sensitive hashing, most trees, and graphs that connect each point to all other points within a fixed radius. However, the KNN problem may be a more natural formulation for near-neighbor graphs that connect to the nearest $$K$$ points (rather than all points within distance $$R$$). As of April 2021, the verdict is still out.
+[^2]: This is true for locality-sensitive hashing, most trees, and graphs that connect each point to all other points within a fixed radius. However, the KNN problem may be a more natural formulation for near-neighbor graphs that connect to the nearest $$K$$ points (rather than all points within distance $$R$$). As of April 2021, the verdict is still out.
 
-[3] This can be shown via a sphere-packing argument, where the spheres have radius $$R$$. Any query that is answerable with a blue point is also answerable with a black one, so we may delete the blue points with impunity.
+[^3]: This can be shown via a sphere-packing argument, where the spheres have radius $$R$$. Any query that is answerable with a blue point is also answerable with a black one, so we may delete the blue points with impunity.
 
-[4] This is not to be confused with the *empirical* definition of sparsity, which is that most elements from the dataset have only a few nonzero dimensions.
+[^4]: This is not to be confused with the *empirical* definition of sparsity, which is that most elements from the dataset have only a few nonzero dimensions.
 
-[5] This plot came from real data, for a benchmark I ran on the SIFT1M dataset. Algorithms A and B are actually two different implementations of the same graph-based search algorithm (HNSW).
+[^5]: This plot came from real data, for a benchmark I ran on the SIFT1M dataset. Algorithms A and B are actually two different implementations of the same graph-based search algorithm (HNSW).
