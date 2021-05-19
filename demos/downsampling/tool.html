@@ -19,8 +19,6 @@
         <li>Adjust K (length of k-mers). </li>
         <li>Adjust tau (compression factor).</li>
         <li>Select a FASTQ file.</li>
-        <li>Click submit.</li>
-        <li>Download the file.</li>
       </ol>
       <p><span class="paragraph-header">Parameter Values:</span> We recommend K = 15 for short-read datasets, 22 for long-read datasets, and 8 for protein sequences. Typical values of tau range from 0.01 (aggressive downsampling) to 100 (very little compression). The effects are on a logarithmic scale - there is a small difference between 90 and 100, but a large difference between 1 and 10.</p>
       <p><span class="paragraph-header">Note:</span> The web app currently only supports single-ended fastq files. To downsample other file types, use the official <a href="https://github.com/brc7/DiversitySampling">command line tool.</a>.</p>
