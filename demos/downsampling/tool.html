@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="tool.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@900&display=swap" rel="stylesheet">
+
+    <title>Diversity Sampling Tool</title>
+  </head>
+  <body class="body">
+
+
+    <div class="form">
+      <h1>RACE Sampling Tool</h1>
+<!--      <h3>Usage Instructions</h3>-->
+      <ol>
+        <li>Adjust K (length of k-mers). </li>
+        <li>Adjust tau (compression factor).</li>
+        <li>Select a FASTQ file.</li>
+        <li>Click submit.</li>
+        <li>Download the file.</li>
+      </ol>
+      <p><span class="paragraph-header">Parameter Values:</span> We recommend K = 15 for short-read datasets, 22 for long-read datasets, and 8 for protein sequences. Typical values of tau range from 0.01 (aggressive downsampling) to 100 (very little compression). The effects are on a logarithmic scale - there is a small difference between 90 and 100, but a large difference between 1 and 10.</p>
+      <p><span class="paragraph-header">Note:</span> The web app currently only supports single-ended fastq files. To downsample other file types, use the official <a href="https://github.com/brc7/DiversitySampling">command line tool.</a>.</p>
+      <br>
+      <input type="file" id="fileInput" style="display:none">
+      <div class="form-params">
+        <label for="kInput" class="form-label">K</label>
+        <input type="number" id="kInput" value="14" class="form-number">
+        <pre style="width:30px;" class="spacer">.</pre>
+        <label for="tauInput" class="form-label">Tau</label>
+        <input type="number" id="tauInput" value="0.1" class="form-number"><br>
+      </div>
+      <button id="fileSelectButton" class="form-select-button">
+        Select a file
+      </button>
+
+      <button class="form-download-button hoverable" id="downloadFormBtn">
+        <!-- Set the width of the component below for loading bar by doing
+        document.getElementById("loadingBar").style.width = `${percentageDone}%`;
+        Do document.getElementById("downloadFormBtn").classList.add("hoverable")
+        and remove disabled prop of this button when 100% processed-->
+        <span class="form-loading" id="loadingBar" style="width:0">.</span>
+        <span class="form-download-button-text" id="submitDownloadButtonText">Submit</span>
+        .
+      </button>
+    </div>    
+  </body>
+<script type="text/javascript" src="main.js"></script>
+</html>

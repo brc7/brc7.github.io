@@ -1,0 +1,196 @@
+.body {
+    background-color: #fafafa;
+    /*background-color: white;*/
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.spacer {
+    display: inline-block;
+    color: transparent;
+}
+
+.form {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 500px;
+    /*height: 500px;*/
+    padding: 100px;
+    font-family: "Lato", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-params {
+    width: fit-content;
+    /*background-color: black;*/
+}
+
+.form-label {
+    font-family: "Lato", sans-serif;
+    font-size: 30px;
+}
+
+.form-number {
+    font-family: "Lato", sans-serif;
+    font-size: 30px;
+    margin-left: 10px;
+    border-radius: 5px;
+    width: 80px;
+    padding: 5px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.04);
+    outline: none;
+    border: 1px solid transparent;
+}
+
+.form-number:focus {
+    background-color: white;
+    border: 1px solid #1abc9c;
+}
+
+.form-select-button {
+    width: 100%;
+    margin-top: 30px;
+    padding: 12px 50px;
+    font-family: "Lato", sans-serif;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: white;
+    color: #1abc9c;
+    border: 1px solid #1abc9c;
+    /*box-shadow: 0 7px 40px -4px;*/
+    transition: 0.3s;
+}
+
+
+.form-select-button:hover {
+    cursor: pointer;
+    /*box-shadow: 0 7px 15px -4px #1abc9c;*/
+    /*color: white;*/
+    background-color: #f8f8f8;
+}
+
+.form-download-button {
+    width: 100%;
+    margin-top: 30px;
+    padding: 12px 50px;
+    font-family: "Lato", sans-serif;
+    font-size: 20px;
+    border-radius: 5px;
+    border: none;
+    /*background-color: transparent;*/
+    /*background-color: #1abc9c;*/
+    color: transparent;
+    /*box-shadow: 0 7px 40px -4px;*/
+    /*transition: 0.3s;*/
+    position: relative;
+    overflow: hidden;
+}
+
+.form-download-button.hoverable {
+    width: 100%;
+    margin-top: 30px;
+    padding: 12px 50px;
+    font-family: "Lato", sans-serif;
+    font-size: 20px;
+    border-radius: 5px;
+    border: none;
+    /*background-color: transparent;*/
+    background-color: #1abc9c;
+    color: transparent;
+    /*box-shadow: 0 7px 40px -4px;*/
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.form-download-button.hoverable:hover {
+    cursor: pointer;
+    box-shadow: 0 7px 15px -4px #1abc9c;
+    background-color: #1BC8A6;
+}
+
+.form-loading {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #1abc9c;
+    color: transparent;
+    transition: 0.3s;
+    height: 100%;
+}
+
+.form-download-button-text {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: transparent;
+    color: white;
+    border: black;
+    height: 100%;
+    padding: 12px 0;
+
+}
+
+
+
+@media only screen and (max-width: 700px) {
+    .form {
+        padding: 20px;
+        width: calc(100vw - 20%);
+        box-shadow: none;
+    }
+    .body {
+        background-color: white;
+    }
+}
+
+h1 {
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 900;
+    font-size: 50px;
+    margin: 0;
+}
+
+h3 {
+    font-family: "Lato", sans-serif;
+}
+
+p {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+}
+
+.paragraph-header {
+    font-weight: 400;
+}
+
+ol {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    padding-left: 0;
+
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
