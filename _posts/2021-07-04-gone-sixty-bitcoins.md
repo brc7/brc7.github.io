@@ -47,7 +47,7 @@ In order to generate 180 MWh, you would need to:
 - Run a wind turbine at maximum speed for 5 days
 - Harness the power of 2,400 lightning bolts
 - Detonate 160 metric tons of TNT (about 350,000 pounds)
-- Cycle the equivalent of the Tour de France, four thousand times
+- Cycle the equivalent of the Tour de France, seven thousand times
 - Run 13.7 million miles on a treadmill. That's enough to circumnavigate the globe 548 times!
 - Harvest the energy output from 2 sextillion mitochondria (metabolic equivalent of approximately 84 million people, or the population of Germany)
 - Harvest the power of 500 billion heartbeats

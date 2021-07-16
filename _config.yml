@@ -12,11 +12,11 @@ url:                "https://randorithms.com"
 # linkedin_username:
 
 # Add your google-analytics ID here to activate google analytics
-google_analytics:   UA-141729288-1 # out your google-analytics code
+google_analytics:   UA-141729288-1 # put your google-analytics code
 
 # Build settings
 markdown:           kramdown
-paginate:           5
+paginate:           10
 paginate_path:      "/posts/page:num/"
 plugins:
   - jekyll-feed
