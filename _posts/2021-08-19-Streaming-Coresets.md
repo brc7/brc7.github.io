@@ -173,6 +173,7 @@ Discrepancy is different - it eliminates points based on redundancy. Discrepancy
 To understand the difference between importance and redundancy, think about what happens when we have two identical points in the dataset. For sensitivity sampling, the importance of a point depends on two things:
 1. The number of similar points
 2. The maximum contribution of the point to the sum
+
 Most importantly, identical points have the same importance weights. If we use importance sampling, we will correctly identify whether the points are important, but we might accidentally sample *both* of them. This is clearly a waste, since we could've gotten a smaller coreset by keeping one of the points and assigning it a weight of two. 
 
 On the other hand, the discrepancy method will assign the points to opposite groups (and therefore only keep one of them). This happens because the contributions of each point will perfectly cancel each other out if the two points are assigned opposite signs. The discrepancy method has identified that the second point is redundant and has discarded it.

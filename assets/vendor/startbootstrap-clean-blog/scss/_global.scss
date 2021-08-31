@@ -255,6 +255,15 @@ pre {
   .highlight .il {
     color: #099; }
 
+/* ------------------------------------------------------------------ */
+/* MathJax Overflow fix 
+/* ------------------------------------------------------------------ */
+
+.MathJax_Display {
+  text-align: center;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
 
 
 
