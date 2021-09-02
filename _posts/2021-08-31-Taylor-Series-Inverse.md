@@ -5,7 +5,7 @@ layout: post
 background: '/assets/img/2021-07-04-background.jpg'
 ---
 
-The Taylor series is a widely-used method to approximate a function. Given a function $$y = f(x)$$, we can express $$f(x)$$ in terms of powers of x. 
+The Taylor series is a widely-used method to approximate a function, with many applications. Given a function $$y = f(x)$$, we can express $$f(x)$$ in terms of powers of x. 
 
 Usually, computing the Taylor series of a function is easy - just take derivatives and use the formula from an introductory calculus textbook. But what if you want the Taylor series of the function's inverse $$f^{-1}(y)$$ and you can't write down a closed-form expression for the inverse? This is hard because we don't have access to the derivatives any longer, so we can't use the usual formula. But it's still possible, and this post is going to show you how (as well as provide code to do it).
 
