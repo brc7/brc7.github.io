@@ -2,7 +2,7 @@
 title: How to Find the Taylor Series of an Inverse Function
 author: Ben Coleman
 layout: post
-background: '/assets/img/2019-08-11-background.jpg'
+background: '/assets/img/2021-07-04-background.jpg'
 ---
 
 The Taylor series is a widely-used method to approximate a function. Given a function $$y = f(x)$$, we can express $$f(x)$$ in terms of powers of x. 
@@ -26,6 +26,11 @@ Taylor polynomials are useful because we can often approximate a complicated fun
 $$ \hat{f_{}} (x) = \sum_{n = 0}^{\infty} c_n (x - x_0)^n = f(x) $$
 
 This is true for points that are near the expansion point $$x_0$$. Go too far from the expansion point, and all bets are off. There are a few points that are important in practice.
+
+<figure>
+<img src="/assets/img/2021-08-31/taylor_series_example.png" width="600" style="display:block; margin-left: auto; margin-right: auto;">
+  <figcaption>The figure shows an example of a Taylor series approximation for the cosine function, for different truncated series lengths N. The region of convergence for cosine is the entire real number line, so adding terms makes the approximation better everywhere. Note that the N = 20 term approximation overlaps completely with the function. </figcaption>
+</figure>
 
 #### 1. How far is too far?
 
@@ -267,7 +272,7 @@ $$ f(x) = \frac{2}{\pi}\arctan\left(\frac{w}{x}\right) - \frac{x}{w \pi} \log\le
 
 Here, $$w$$ is a parameter to the function that - for simplicity - we will set to be equal to 4 and expand about $$x = 1$$. In practice, $$w$$ is a tunable parameter so it was important that we be able to find the inverse easily for many choices of $$w$$.
 
-I ran the Sympy code to generate an approximation for this curve, and I obtained the following results. There are a few interesting results:
+I ran the Sympy code to generate an approximation for this curve, and I obtained the following results. There are a few interesting points:
 1. The recursive procedure successfully found a Taylor series for our inverse function.
 2. Additional terms only improve the approximation inside a narrow region of convergence. In practice, this means that we want to use low-order approximations (at least in this case).
 
@@ -275,6 +280,8 @@ I ran the Sympy code to generate an approximation for this curve, and I obtained
 <img src="/assets/img/2021-08-31/taylor_series_roc.png" width="600" style="display:block; margin-left: auto; margin-right: auto;">
   <figcaption>The figure shows Taylor series approximations of the inverse collision probability. All of the approximations do well inside a narrow region of convergence, but low-order approximations are better outside of this region. There's a sweet spot around N = 20, at least for this function.</figcaption>
 </figure>
+
+**Sanity Check:** As a final check on the code, I ran the approximation for the function $$\log(x)$$ (whose inverse is the exponential function). The procedure yielded the correct coefficients.
 
 ## Conclusion
 
