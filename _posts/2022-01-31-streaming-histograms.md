@@ -5,17 +5,23 @@ layout: post
 background: '/assets/img/2019-08-11-background.jpg'
 ---
 
-The histogram is a highly useful data summary that is widely used across science, engineering, finance and other areas that deal with real-world data.[^1] It's the easiest way to visualize the distribution of low-dimensional data, quickly check for outliers and do all sorts of other useful things.
+The histogram is a data summary that is widely used across science, engineering, finance and other areas. Histograms are often the first thing you look at when exploring a new dataset or problem. You can use them to visualize the distribution, identify outliers and do all sorts of other useful things.[^1]
 
-## Histograms on Streaming Data
-Usually, we compute a histogram over a static set of data. However, sometimes we want to compute a *running histogram* over a stream of values. For example, we might be running a web service that responds to requests from customers, and we'd like to monitor the health of the service based on statistics derived from the latency histogram (P99 latency, etc). 
+But histograms are hard to build if we don't have access to the full dataset up front. We need some tricks to build histograms over streaming data, where values arrive one at a time. This post will explain the tricks.
+
+## Why do we need streaming histograms?
+Usually, we compute a histogram over a static set of data. However, sometimes we want to compute a *running histogram* over a stream of values. For example, we might be running a web service that responds to requests from customers, and we'd like to monitor the health of the service based on how long it takes to serve each customer. In other words, we want to find the latency histogram. 
 
 <figure>
 <img src="/assets/img/2022-01-31/latency_histogram.png" width="800" style="display:block; margin-left: auto; margin-right: auto;">
-  <figcaption>This is latency histogram for a tool that processes gene sequences. Note the log scale. The tool is generally very fast, and low latencies (under 10ms) are common. However, the histogram shows that the 99.9th percentile latency is substantially larger (75ms). If we wanted to apply this tool to a stream of sequences, we'd need to check that it's acceptable to introduce a 75ms delay.</figcaption>
+  <figcaption>This is a latency histogram for a tool that processes gene sequences. Note the log scale. The tool is generally very fast, and fast response times (under 10ms) are common. However, the histogram shows that the 99.9th percentile latency is substantially larger (75ms). If we wanted to apply this tool to a stream of sequences, we'd need to check that it's acceptable to introduce a 75ms delay.</figcaption>
 </figure>
 
-One approach is to keep a latency histogram and, as new requests arrive, add the new latency values to the histogram. The problem with this approach is that the global histogram might not reflect the current health of the service. For example, suppose we log all the request latencies throughout the day, but we've had an outage for the last ten minutes. The last ten minutes' worth of values will be substantially higher than when the service was healthy, but we won't notice until the unserved requests are a substantial fraction of the total requests. By then, it may be too late to fix the problem without consequences.
+One approach is to just add new values to the histogram as new data points become available. The problem with this approach is that the global histogram might not reflect recent events. 
+
+For example, suppose we log all the request latencies throughout the day, but the server crashed for the last ten minutes. The last ten minutes' worth of service times will be really high (at least ten minutes), but we might miss them because the vast majority of values in the histogram came from before (when the service was healthy). By the time the unserved requests do show up, it might be too late to fix the problem without consequences.
+
+<!-- substantially higher than when the service was healthy, but we won't notice until the unserved requests are a substantial fraction of the total requests. By then, it may be too late to fix the problem without consequences. -->
 
 We need a type of histogram that prioritizes recent data and ignores old data.
 
