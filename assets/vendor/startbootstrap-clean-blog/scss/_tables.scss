@@ -1,0 +1,32 @@
+// Styling for tables
+// Note: For responsive tables in kramdown, wrap the table markdown with
+// <div class="table-responsive" markdown="block"> and 2 lines of whitespace
+
+table {
+  border-collapse: collapse;
+  margin: 25px auto 0px auto;
+  border-radius:5px 5px 0 0;
+  overflow:hidden;
+}
+
+thead tr {
+  background-color: $ochre;
+  color: $white;
+  text-align: left;
+}
+
+th, td {
+  padding:  12px 15px;
+}
+
+tbody tr {
+  border-bottom: thin solid $gray-300;
+}
+
+tbody tr:nth-of-type(even) {
+  background-color: $gray-200;
+}
+tbody tr:last-of-type {
+    border-bottom: medium solid $ochre;
+}
+
