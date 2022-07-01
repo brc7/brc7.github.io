@@ -92,8 +92,8 @@ When possible, I try to have this conversation on an individual basis. My goal i
 The orientation meeting is also a good time to address concerns about authorship and author order. While it may seem premature, I think it's best to agree on a policy from the beginning so that everyone knows what to expect. It goes without saying that undergraduates should be co-authors on any paper that uses their code, ideas, results or writing. Also, the graduate student mentor is usually the first author, since they'll probably carry the project and write (or rewrite) the submission.
 
 However, I recognize two levels beyond co-authorship that signify higher contribution levels. Here is my authorship policy for undergraduate researchers.
-1. Co-authorship: This is the baseline level of contribution, where the undergraduate is somewhere on the author list - typically in the second or third position.
-2. Shared primary authorship: Most fields support a way to denote equal contributions from multiple authors - in my field, this is commonly done with a star or footnote. Undergrads help critical experiments, write code and help write the paper can usually expect shared primary authorship.
+1. Co-authorship: This is the baseline level of contribution, where the undergraduate is somewhere on the author list - typically in the second or third position. Everyone who contributes in any way gets co-authorship.
+2. Shared primary authorship: Most fields support a way to denote equal contributions from multiple authors - in my field, this is commonly done with a star or footnote. Undergrads who run critical experiments, write code and help write the paper can usually expect shared primary authorship.
 3. First authorship: Here, the undergraduate appears first on the author list and the graduate student mentor has shared primary authorship. This is on the table if they write the majority of the submission or make substantial intellectual contributions without which the project would fail.
 
 There are three situations where I deviate from this authorship policy. The first occurs in fields like theoretical computer science, where the author order is alphabetical.
@@ -235,13 +235,17 @@ Some people benefit from the structure of a weekly report. Written reports have 
 
 My undergraduate mentor insisted on a 1-page weekly Word document, which worked very well. This document-based meeting strategy is also a core part of Amazon's meeting policy, and I've used it in my own meetings for several years. However, with undergrads I often relax the requirement to an email, since the process of writing a full report takes time that could be spent elsewhere. The two times that I insist on a written document are when reporting experiment results and when working on theoretical proofs. Here, it's indispensable to have a written resource for reference.
 
+Some mentors request a few PowerPoint slides every week. I find this ineffective because students put too much effort into making and delivering the presentation. In a meeting, slides can almost always be replaced by notes, screenshots, figures and whiteboard drawings. Reports are more productive because we can spend the entire meeting time in discussion.
+
+**Tip:** Make sure the student understands that the weekly report is just for communication. A few bullet points will suffice. Students should not feel pressure to write a long, polished report every week.
+
 #### Setting goals
 
 Early on, we set lots of small, highly-specific goals. As the student develops expertise and independence, a more collaborative approach is in order.
 
 It's important to recognize that not all students want to become independent researchers - some people are happy to take directions and help out with experiments. But undergrads don't have to design experiments or choose research directions to benefit from autonomy. 
 
-My strategy is to slowly increase the scope of the weekly goals. Where before we set a weekly goal to run a specific computational method, now we might ask for multiple runs on a several datasets. Going forward, we might ask the student to construct an easily-run benchmark task that compares several methods on several datasets. Once the student has been exposed to the scientific literature, we can even ask for short summaries of papers. None of these tasks constitute independent research, but they all contribute in greater ways to our project.
+My strategy is to slowly increase the scope of the weekly goals. Where before we set a weekly goal to run a specific computational method, now we might ask for multiple runs on several datasets. Going forward, we might ask the student to construct an easily-run benchmark that compares several methods on multiple tasks. Once the student has been exposed to the scientific literature, we can even ask for short summaries of papers. None of these tasks constitute independent research, but they all contribute in greater ways to our project.
 
 Ambitious students might eventually want to tackle their own research problems. We can prepare them for this by exposing them to recent ideas in the literature. For example, we might ask them to identify (and implement) the leading experimental methods for a problem, or to compare the results from recent studies. Ideas that arise during this process can be integrated back into the weekly goals, to allow students to pursue some of their own hypotheses.
 

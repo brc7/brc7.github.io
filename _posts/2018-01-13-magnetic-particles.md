@@ -1,6 +1,6 @@
 ---
 title: Modeling a Magnetic Particle Trajectory in COMSOL
-author: Ben
+author: Ben Coleman
 layout: post
 background: '/assets/img/2018-01-13-background.jpg'
 ---
@@ -16,7 +16,9 @@ The particle tracing module allows us to specify a general force to apply to eac
 $$ \mathbf{F} = \frac{V \Delta \mathcal{X}_v}{\mu_0} (\mathbf{B} \cdot \nabla)\mathbf{B}$$
 
 
-Vectors are in boldface, $$\mathbf{B}$$ is the magnetic flux density $$(T)$$, $$V$$ is the volume of the particle, $$(m^3)$$, $$\mathcal{X}_v$$ is the dimensionless magnetic volume susceptibility, $$\mu_0 = 4\pi \times 10^{-7}$$, and $$ (\mathbf{B} \cdot \nabla)\mathbf{B} $$ is shorthand for the [convective operator](http://mathworld.wolfram.com/ConvectiveOperator.html). Note that, although this expression provides a good approximation, additional terms may be necessary to account for the remnant bead magnetization - particularly for low applied fields [1]. An equivalent expression was used to compute trajectories for magnetic bead capture in [2], [3], and [4]. 
+Vectors are in boldface, $$\mathbf{B}$$ is the magnetic flux density $$(T)$$, $$V$$ is the volume of the particle, $$(m^3)$$, $$\mathcal{X}_v$$ is the dimensionless magnetic volume susceptibility, $$\mu_0 = 4\pi \times 10^{-7}$$, and $$ (\mathbf{B} \cdot \nabla)\mathbf{B} $$ is shorthand for the [convective operator](http://mathworld.wolfram.com/ConvectiveOperator.html). The expression $$\Delta \mathcal{X}_v$$ refers to the *difference* in susceptibility between the bead and the surrounding media. For non-magnetic media, it is common to approximate the susceptibility of the surrounding media as zero, which simplifies the expression.
+
+This expression provides a good approximation to the forces on magnetic particles and is very common in the literature. An equivalent expression was used to compute trajectories for magnetic bead capture in [2], [3], and [4]. However, it should be noted that additional terms may be necessary to account for the remnant bead magnetization - particularly for very small applied fields [1]. In such settings, a more complicated force model can be more accurate.
 
 To use this formula with COMSOL's particle tracing module, we need to break the force into its three Cartesian coordinates. This results in a long expression with many partial derivatives, but the result is really just the Cartesian form of the convective operator multiplied by a scalar. For our COMSOL implementation, it is important to note that all nine partial spatial derivatives of the B field are needed. 
 
