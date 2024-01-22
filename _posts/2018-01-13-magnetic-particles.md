@@ -5,6 +5,8 @@ layout: post
 background: '/assets/img/2018-01-13-background.jpg'
 ---
 
+**Update (January 2024):** I've written a [second post](https://randorithms.com/2024/01/21/more-magnetics.html) on this subject that goes into greater detail and includes datasheets, example COMSOL files, and more. If you have questions after reading this post, please read the deep dive!
+
 I've wanted to model magnetic particle motion in COMSOL for a while. I've heard great things about the software, so I wanted to try it for our microfluidic chip designs and magnetics problems. More and more of my lab coworkers seem to be using nanoparticles, so I also wanted to look into user-friendly simulation tools. Before our lab had access to COMSOL, I would often write my own simulations in Python or export results from specialized tools, like [Finite Element Method Magnetics](http://www.femm.info/wiki/HomePage) (FEMM) and use a makefile to glue the final simulation together. This approach works for me, but it's different for every project and downright hostile to my collaborators.
 
 I expected a steep learning curve, but I actually found COMSOL to be intuitive and even enjoyable. COMSOL even has a particle tracing module that simplifies particle interactions with fluids. Unfortunately, the default interface only supports charged particles with no magnetization. Our particles have no charge, at least theoretically, but they do have a magnetic moment in the presence of an applied magnetic field. In COMSOL things usually just work, but we need to do some customization if we want to use this feature. 
